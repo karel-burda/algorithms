@@ -1,4 +1,4 @@
-#include "searching/binary_search.h"
+#include "algorithms/searching/binary_search.h"
 
 int searching_binary_search(int array[], int element)
 {

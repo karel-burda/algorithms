@@ -15,7 +15,7 @@ target_sources(${PROJECT_NAME}
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/searching/binary_search.cpp)
 
 
-find_package(alforithms CONFIG REQUIRED)
+find_package(algorithms CONFIG REQUIRED)
 message(STATUS "Found version of algorithms is: ${algorithms_VERSION}")
 target_link_libraries(${PROJECT_NAME} PRIVATE burda::algorithms)
 
