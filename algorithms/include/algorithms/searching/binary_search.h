@@ -1,3 +1,4 @@
 #pragma once
 
-int searching_binary_search(int array[], int element);
+// TODO: remove size
+int searching_binary_search(int array[], int size, int element);
