@@ -17,7 +17,6 @@ static int binary_search_recursive(int array[], size_t left_index, size_t right_
     {
         return binary_search_recursive(array, middle_index+1, right_index, element);
     }
-
 }
 
 int searching_binary_search_recursive(int array[], size_t size, int element)
