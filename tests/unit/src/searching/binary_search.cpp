@@ -25,7 +25,7 @@ TEST(binary_search_test_recursive, basic)
 TEST(binary_search_test_recursive, invalid)
 {
     {
-        int array[] = {};
+        int array[] = { 0 };
         EXPECT_EQ(searching_binary_search_recursive(array, 0, 0), -1);
     }
 
