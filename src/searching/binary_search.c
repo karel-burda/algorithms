@@ -1,8 +1,8 @@
 #include "algorithms/searching/binary_search.h"
 
-static int binary_search(int array[], size_t left_index, size_t right_index, int element)
+static int binary_search_recursive(int array[], size_t left_index, size_t right_index, int element)
 {
-    const size_t middle_index = array[left_index + right_index]/2;
+    const size_t middle_index = (left_index + right_index) / 2;
     const int middle_element = array[middle_index];
 
     if (middle_element == element)
@@ -11,20 +11,20 @@ static int binary_search(int array[], size_t left_index, size_t right_index, int
     }
     else if (middle_element > element)
     {
-        return binary_search(array, left_index, middle_index-1, element);
+        return binary_search_recursive(array, left_index, middle_index-1, element);
     }
     else
     {
-        return binary_search(array, middle_index+1, right_index, element);
+        return binary_search_recursive(array, middle_index+1, right_index, element);
     }
 
 }
 
-int searching_binary_search(int array[], size_t size, int element)
+int searching_binary_search_recursive(int array[], size_t size, int element)
 {
-    if (array != NULL)
+    if (array != NULL && size != 0)
     {
-        return binary_search(array, 0, size-1, element);
+        return binary_search_recursive(array, 0, size-1, element);
     }
     else
     {
