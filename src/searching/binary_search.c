@@ -1,10 +1,8 @@
-#include <stddef.h>
-
 #include "algorithms/searching/binary_search.h"
 
-static int binary_search(int array[], int left_index, int right_index, int element)
+static int binary_search(int array[], size_t left_index, size_t right_index, int element)
 {
-    const int middle_index = array[left_index + right_index]/2;
+    const size_t middle_index = array[left_index + right_index]/2;
     const int middle_element = array[middle_index];
 
     if (middle_element == element)
@@ -22,7 +20,7 @@ static int binary_search(int array[], int left_index, int right_index, int eleme
 
 }
 
-int searching_binary_search(int array[], int size, int element)
+int searching_binary_search(int array[], size_t size, int element)
 {
     if (array != NULL)
     {
