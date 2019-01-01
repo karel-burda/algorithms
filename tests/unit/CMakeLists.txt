@@ -12,7 +12,8 @@ add_executable(${PROJECT_NAME} "")
 
 target_sources(${PROJECT_NAME}
                    PRIVATE
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/searching/binary_search.cpp)
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/searching/binary_search.cpp
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/number/swap.cpp)
 
 
 find_package(algorithms CONFIG REQUIRED)

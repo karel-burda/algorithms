@@ -1,13 +1,16 @@
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
-project(algorithms VERSION 0.0.1 LANGUAGES C)
+project(algorithms VERSION 0.2.0 LANGUAGES C)
 
 add_library(${PROJECT_NAME} STATIC)
 
 target_sources(${PROJECT_NAME}
                    PUBLIC
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/searching/binary_search.h
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/searching/binary_search.c)
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/searching/binary_search.c
+
+                       ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/number/swap.h
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/number/swap.c)
 
 target_include_directories(${PROJECT_NAME}
                                 PUBLIC
