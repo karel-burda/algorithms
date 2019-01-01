@@ -32,7 +32,6 @@ static int binary_search_recursive(int array[], size_t size, size_t left_index, 
 }
 
 static int binary_search_iterative(int array[], size_t size, size_t left_index, size_t right_index, int element) {
-    // TODO: optimize
     while (true)
     {
         if (left_index == right_index || right_index > size - 1)
