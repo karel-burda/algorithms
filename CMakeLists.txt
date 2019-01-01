@@ -12,10 +12,10 @@ target_sources(${PROJECT_NAME}
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/string/strlen.h
 
                    PRIVATE
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/searching/binary_search.c
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/number/swap.c
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/string/reverse.c
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/string/strlen.c)
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/searching/binary_search.c
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/number/swap.c
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/reverse.c
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/strlen.c)
 
 target_include_directories(${PROJECT_NAME}
                                 PUBLIC

@@ -6,7 +6,7 @@ int number_swap(int * number1, int * number2)
 {
     if (number1 != NULL && number2 != NULL)
     {
-        int temp = *number1;
+        const int temp = *number1;
         *number1 = *number2;
         *number2 = temp;
 
