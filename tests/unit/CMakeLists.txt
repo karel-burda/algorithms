@@ -14,6 +14,7 @@ target_sources(${PROJECT_NAME}
                    PRIVATE
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/searching/binary_search.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/number/swap.cpp
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/string/reverse.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/string/strlen.cpp)
 
 

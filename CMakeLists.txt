@@ -7,12 +7,14 @@ add_library(${PROJECT_NAME} STATIC)
 target_sources(${PROJECT_NAME}
                    PUBLIC
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/searching/binary_search.h
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/searching/binary_search.c
-
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/number/swap.h
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/number/swap.c
-
+                       ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/string/reverse.h
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/string/strlen.h
+
+                   PRIVATE
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/searching/binary_search.c
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/number/swap.c
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/string/reverse.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/string/strlen.c)
 
 target_include_directories(${PROJECT_NAME}

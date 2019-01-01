@@ -7,19 +7,15 @@ extern "C"
 
 namespace
 {
-TEST(binary_search_test, basic)
+TEST(string_strlen, basic)
 {
-    {
-        EXPECT_EQ(string_strlen("abcdefgh"), 8);
-        EXPECT_EQ(string_strlen("ab"), 2);
-        EXPECT_EQ(string_strlen(""), 0);
-    }
+    EXPECT_EQ(string_strlen("abcdefgh"), 8);
+    EXPECT_EQ(string_strlen("ab"), 2);
+    EXPECT_EQ(string_strlen(""), 0);
 }
 
-TEST(binary_search_test, invalid)
+TEST(string_strlen, invalid)
 {
-    {
-        EXPECT_EQ(string_strlen(NULL), 0);
-    }
+    EXPECT_EQ(string_strlen(NULL), 0);
 }
 }
