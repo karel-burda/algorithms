@@ -1,8 +1,5 @@
-#include <thread>
-
 #include <gtest/gtest.h>
 
-// TODO: move extern to the algorithms
 extern "C"
 {
 #include <algorithms/number/swap.h>

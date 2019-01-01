@@ -10,7 +10,10 @@ target_sources(${PROJECT_NAME}
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/searching/binary_search.c
 
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/number/swap.h
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/number/swap.c)
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/number/swap.c
+
+                       ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/string/strlen.h
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/string/strlen.c)
 
 target_include_directories(${PROJECT_NAME}
                                 PUBLIC
