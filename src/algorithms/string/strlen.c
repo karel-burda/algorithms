@@ -1,19 +1,23 @@
+#include <algorithms/error_code.h>
 #include "algorithms/string/strlen.h"
 
-size_t string_strlen(const char * string)
+int string_strlen(const char * string, size_t * length)
 {
-    size_t length = 0;
-
-    if (string != NULL)
+    if (string != NULL && length != NULL)
     {
+        *length = 0;
         const char *character = string;
 
         while (*character != '\0')
         {
-            ++length;
+            ++(*length);
             ++character;
         }
-    }
 
-    return length;
+        return E_SUCCESS;
+    }
+    else
+    {
+        return E_INVALID_INPUT;
+    }
 }
