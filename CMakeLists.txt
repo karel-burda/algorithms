@@ -6,6 +6,8 @@ add_library(${PROJECT_NAME} STATIC)
 
 target_sources(${PROJECT_NAME}
                    PUBLIC
+                       ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/error_code.h
+
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/searching/binary_search.h
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/number/swap.h
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/string/reverse.h

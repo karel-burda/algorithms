@@ -1,5 +1,6 @@
 #include <stdbool.h>
 
+#include "algorithms/error_code.h"
 #include "algorithms/searching/binary_search.h"
 
 static size_t get_middle_index(size_t left_index, size_t right_index)
@@ -11,7 +12,7 @@ static int binary_search_recursive(int array[], size_t size, size_t left_index, 
 {
     if (left_index == right_index || right_index > size - 1)
     {
-        return -1;
+        return E_NOT_FOUND;
     }
 
     const size_t middle_index = get_middle_index(left_index, right_index);
@@ -36,7 +37,7 @@ static int binary_search_iterative(int array[], size_t size, size_t left_index, 
     {
         if (left_index == right_index || right_index > size - 1)
         {
-            return -1;
+            return E_NOT_FOUND;
         }
 
         const size_t middle_index = get_middle_index(left_index, right_index);
@@ -57,7 +58,7 @@ static int binary_search_iterative(int array[], size_t size, size_t left_index, 
     }
 }
 
-int searching_binary_search_recursive(int array[], size_t size, int element)
+error_t searching_binary_search_recursive(int array[], size_t size, int element)
 {
     if (array != NULL && size != 0)
     {
@@ -65,11 +66,11 @@ int searching_binary_search_recursive(int array[], size_t size, int element)
     }
     else
     {
-        return -1;
+        return E_INVALID_INPUT;
     }
 }
 
-int searching_binary_search_iterative(int array[], size_t size, int element)
+error_t searching_binary_search_iterative(int array[], size_t size, int element)
 {
     if (array != NULL && size != 0)
     {
@@ -77,6 +78,6 @@ int searching_binary_search_iterative(int array[], size_t size, int element)
     }
     else
     {
-        return -1;
+        return E_INVALID_INPUT;
     }
 }

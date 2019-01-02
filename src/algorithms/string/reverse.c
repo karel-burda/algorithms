@@ -1,5 +1,6 @@
 #include <stddef.h>
 
+#include "algorithms/error_code.h"
 #include "algorithms/string/reverse.h"
 
 int string_reverse(char * string)
@@ -25,10 +26,10 @@ int string_reverse(char * string)
             --end;
         }
 
-        return 0;
+        return E_SUCCESS;
     }
     else
     {
-        return -1;
+        return E_INVALID_INPUT;
     }
 }
