@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
-project(algorithms VERSION 0.2.0 LANGUAGES C)
+project(algorithms VERSION 0.3.0 LANGUAGES C)
 
 add_library(${PROJECT_NAME} STATIC)
 
