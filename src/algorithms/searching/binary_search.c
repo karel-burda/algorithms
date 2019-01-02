@@ -58,7 +58,7 @@ static int binary_search_iterative(int array[], size_t size, size_t left_index, 
     }
 }
 
-error_t searching_binary_search_recursive(int array[], size_t size, int element)
+int searching_binary_search_recursive(int array[], size_t size, int element)
 {
     if (array != NULL && size != 0)
     {
@@ -70,7 +70,7 @@ error_t searching_binary_search_recursive(int array[], size_t size, int element)
     }
 }
 
-error_t searching_binary_search_iterative(int array[], size_t size, int element)
+int searching_binary_search_iterative(int array[], size_t size, int element)
 {
     if (array != NULL && size != 0)
     {
