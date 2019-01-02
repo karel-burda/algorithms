@@ -13,14 +13,14 @@ TEST(string_reverse_test, basic)
     {
         char string[] = "A";
         const int result = string_reverse(string);
-        EXPECT_EQ(result, E_SUCCESS);
+        ASSERT_EQ(result, E_SUCCESS);
         EXPECT_STREQ(string, "A");
     }
 
     {
         char string[] = "12345";
         const int result = string_reverse(string);
-        EXPECT_EQ(result, E_SUCCESS);
+        ASSERT_EQ(result, E_SUCCESS);
         EXPECT_STREQ(string, "54321");
     }
 }
