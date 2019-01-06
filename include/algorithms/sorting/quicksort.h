@@ -2,4 +2,4 @@
 
 #include <stddef.h>
 
-int sorting_quicksort_recursive(int * array, size_t length);
+int sorting_quicksort_recursive(int * array, size_t size);
