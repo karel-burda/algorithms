@@ -1,0 +1,38 @@
+git:
+  depth: 1
+
+matrix:
+  include:
+     - name: "algorithms, tests -- linux, debug, cppcheck, coverage, g++, 64-bit"
+       os: linux
+       dist: xenial
+       language: cpp
+       env: BUILD_TYPE="Debug"
+       compiler: g++
+       sudo: required
+       addons:
+         apt:
+           sources:
+             - ubuntu-toolchain-r-test
+           packages:
+             - g++-6
+             - cppcheck
+       install: export CXX="g++-6"
+       script:
+         - set -e
+
+         - cppcheck --enable=all -I include --language=c++ --platform=unix64 --std=c++11 --check-config --suppress=missingIncludeSystem
+                    -v src
+
+         - cmake -Bbuild -H. -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE
+         - cmake -Bbuild/submodules/test-utils -Hsubmodules/test-utils -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE
+         - cmake -Bbuild/tests/unit -Htests/unit
+                 -Dalgorithms_DIR:PATH=$(pwd)/build
+                 -Dtest-utils_DIR:PATH=$(pwd)/build/submodules/test-utils
+                 -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE
+                 -DCOVERAGE:BOOL=ON
+         - cmake --build build/tests/unit --target run-all-tests-verbose --config $BUILD_TYPE -- -j $(nproc)
+
+         - bash <(curl -s https://codecov.io/bash)
+
+         - set +e
