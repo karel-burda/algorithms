@@ -20,6 +20,10 @@ target_sources(${PROJECT_NAME}
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/string/unique.cpp)
 
 
+find_package(test-utils CONFIG REQUIRED)
+message(STATUS "Found version of test-utils is: ${test-utils_VERSION}")
+target_link_libraries(${PROJECT_NAME} PRIVATE burda::test-utils)
+
 find_package(algorithms CONFIG REQUIRED)
 message(STATUS "Found version of algorithms is: ${algorithms_VERSION}")
 target_link_libraries(${PROJECT_NAME} PRIVATE burda::algorithms)
