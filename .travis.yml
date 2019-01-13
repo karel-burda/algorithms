@@ -28,7 +28,7 @@ matrix:
          - cmake --build build --target algorithms --config $BUILD_TYPE -- -j $(nproc)
 
          - cmake -Bbuild/submodules/test-utils -Hsubmodules/test-utils -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE
-         
+
          - cmake -Bbuild/tests/unit -Htests/unit
                  -Dalgorithms_DIR:PATH=$(pwd)/build
                  -Dtest-utils_DIR:PATH=$(pwd)/build/submodules/test-utils
