@@ -10,8 +10,7 @@ static size_t get_pivot_index(size_t left_index, size_t right_index)
 static size_t partition(int * array, size_t left_index, size_t right_index)
 {
     const int pivot = array[get_pivot_index(left_index, right_index)];
-
-    while (left_index < right_index)
+    while (left_index <= right_index)
     {
         while (array[left_index] < pivot)
         {
@@ -23,13 +22,18 @@ static size_t partition(int * array, size_t left_index, size_t right_index)
             --right_index;
         }
 
-        if (left_index < right_index)
+        if (left_index <= right_index)
         {
             number_swap(&array[left_index], &array[right_index]);
             ++left_index;
-            --right_index;
+
+            if (right_index > 0)
+            {
+                --right_index;
+            }
         }
     }
+
 
     return left_index;
 }
@@ -38,16 +42,13 @@ static void quicksort_recursive(int * array, size_t left_index, size_t right_ind
 {
     const size_t partition_index = partition(array, left_index, right_index);
 
-    if (partition_index > 0)
+    if (left_index < partition_index - 1)
     {
-        if (left_index < partition_index - 1)
-        {
-            quicksort_recursive(array, left_index, partition_index - 1);
-        }
+        quicksort_recursive(array, left_index, partition_index - 1);
+    }
 
-        if (partition_index < right_index - 1) {
-            quicksort_recursive(array, partition_index + 1, right_index);
-        }
+    if (partition_index < right_index) {
+        quicksort_recursive(array, partition_index, right_index);
     }
 }
 
