@@ -24,7 +24,7 @@ matrix:
          - cppcheck --enable=all -I include --language=c++ --platform=unix64 --std=c++11 --check-config --suppress=missingIncludeSystem
                     -v src
 
-         - cmake -Bbuild -H. -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE
+         - cmake -Bbuild -H. -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE -DCOVERAGE:BOOL=ON
          - cmake --build build --target algorithms --config $BUILD_TYPE -- -j $(nproc)
 
          - cmake -Bbuild/submodules/test-utils -Hsubmodules/test-utils -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE
@@ -33,7 +33,6 @@ matrix:
                  -Dalgorithms_DIR:PATH=$(pwd)/build
                  -Dtest-utils_DIR:PATH=$(pwd)/build/submodules/test-utils
                  -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE
-                 -DCOVERAGE:BOOL=ON
          - cmake --build build/tests/unit --target run-all-tests-verbose --config $BUILD_TYPE -- -j $(nproc)
 
          - bash <(curl -s https://codecov.io/bash)
