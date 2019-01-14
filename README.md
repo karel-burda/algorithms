@@ -1,7 +1,7 @@
 ![Version](https://img.shields.io/badge/version-0.3.0-blue.svg)
 [![License](https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat)](LICENSE)
 [![Build Status](https://travis-ci.org/karel-burda/algorithms.svg?branch=develop)](https://travis-ci.org/karel-burda/algorithms)
-[![Codecov Status](https://codecov.io/gh/karel-burda/algorithms-utils/branch/develop/graph/badge.svg)](https://codecov.io/gh/karel-burda/algorithms/branch/develop)
+[![Codecov Status](https://codecov.io/gh/karel-burda/algorithms/branch/develop/graph/badge.svg)](https://codecov.io/gh/karel-burda/algorithms/branch/develop)
 
 ## Important
 This project contains git sub-modules that are needed for building tests.
