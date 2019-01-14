@@ -41,7 +41,7 @@ if (COVERAGE)
     burda_cmake_helpers_cpp_coverage_add_build_options(${PROJECT_NAME} PRIVATE C)
 endif()
 
-burda_cmake_helpers_cpp_warnings_add_pedantic_level(${PROJECT_NAME} PUBLIC)
+burda_cmake_helpers_cpp_warnings_add_pedantic_level(${PROJECT_NAME} PUBLIC C)
 
 install(TARGETS ${PROJECT_NAME}
         DESTINATION lib
