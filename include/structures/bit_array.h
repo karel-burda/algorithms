@@ -9,7 +9,6 @@ struct _burda_structures_bit_array
 };
 
 typedef struct _burda_structures_bit_array bit_array;
-//typedef unsigned char * bit_array;
 
 int structures_bit_array_create(bit_array ** array, size_t size);
 
