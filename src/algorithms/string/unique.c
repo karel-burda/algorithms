@@ -12,7 +12,7 @@ static bool has_unique_characters(const char * string, const size_t charset_leng
     const char * iterator = string;
     while (*iterator != '\0')
     {
-        const char current_character = *iterator;
+        const unsigned char current_character = *iterator;
         if (characters[current_character] == false)
         {
             characters[current_character] = true;
