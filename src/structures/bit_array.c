@@ -26,15 +26,15 @@ int structures_bit_array_create(bit_array ** array, size_t size)
     return error_code;
 }
 
-int structures_bit_array_destroy(bit_array * array)
+int structures_bit_array_destroy(bit_array ** array)
 {
-    free(array->array);
-    array->array = NULL;
+    free((*array)->array);
+    (*array)->array = NULL;
 
-    array->size = 0;
+    (*array)->size = 0;
 
-    free(array);
-    array = NULL;
+    free(*array);
+    *array = NULL;
 
     return E_SUCCESS;
 }
