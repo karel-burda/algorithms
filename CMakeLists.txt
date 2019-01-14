@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
 project(algorithms VERSION 0.3.0 LANGUAGES C)
 
+include(${CMAKE_CURRENT_SOURCE_DIR}/submodules/cmake-helpers/cmake-helpers/cpp_coverage.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/submodules/cmake-helpers/cmake-helpers/cpp_warnings.cmake)
+
 add_library(${PROJECT_NAME} STATIC)
 
 target_sources(${PROJECT_NAME}
@@ -32,6 +35,13 @@ target_include_directories(${PROJECT_NAME}
 target_compile_features(${PROJECT_NAME}
                             PUBLIC
                                 c_std_11)
+
+if (COVERAGE)
+    message(STATUS "Building algorithms with code coverage")
+    burda_cmake_helpers_cpp_coverage_add_build_options(${PROJECT_NAME} PRIVATE C)
+endif()
+
+burda_cmake_helpers_cpp_warnings_add_pedantic_level(${PROJECT_NAME} PUBLIC)
 
 install(TARGETS ${PROJECT_NAME}
         DESTINATION lib
