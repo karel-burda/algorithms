@@ -11,12 +11,14 @@ add_executable(${PROJECT_NAME} "")
 
 target_sources(${PROJECT_NAME}
                    PRIVATE
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/searching/binary_search.cpp
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/number/swap.cpp
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/sorting/quicksort.cpp
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/string/reverse.cpp
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/string/strlen.cpp
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/string/unique.cpp)
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/searching/binary_search.cpp
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/number/swap.cpp
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/sorting/quicksort.cpp
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/reverse.cpp
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/strlen.cpp
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/unique.cpp
+
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/structures/bit_array.cpp)
 
 
 find_package(test-utils CONFIG REQUIRED)

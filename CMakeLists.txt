@@ -17,6 +17,8 @@ target_sources(${PROJECT_NAME}
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/string/strlen.h
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/string/unique.h
 
+                       ${CMAKE_CURRENT_SOURCE_DIR}/include/structures/bit_array.h
+
                    PRIVATE
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/helper/array.h
 
@@ -26,7 +28,9 @@ target_sources(${PROJECT_NAME}
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/sorting/quicksort.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/reverse.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/strlen.c
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/unique.c)
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/unique.c
+
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/structures/bit_array.c)
 
 target_include_directories(${PROJECT_NAME}
                                 PUBLIC
