@@ -11,7 +11,7 @@ int structures_bit_array_create(bit_array ** array, size_t size)
     const size_t bytes_needed = size / bits_in_byte + (size % bits_in_byte);
 
     *array = (bit_array *)malloc(sizeof(bit_array));
-    if (array != NULL)
+    if (*array != NULL)
     {
         (*array)->size = bytes_needed;
         (*array)->array = malloc((*array)->size);

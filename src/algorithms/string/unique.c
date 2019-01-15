@@ -12,13 +12,23 @@ static bool has_unique_characters(const char * string, const size_t charset_leng
     const char * iterator = string;
     while (*iterator != '\0')
     {
-        const unsigned char current_character = *iterator;
-        if (characters[current_character] == false)
+        const char current_character = *iterator;
+
+        if (current_character > 0)
         {
-            characters[current_character] = true;
+            if (characters[(const unsigned char)current_character] == false)
+            {
+                characters[(const unsigned char)current_character] = true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
+            // TODO: handle incorrect char
+
             return false;
         }
 
@@ -32,7 +42,7 @@ static int string_has_unique_characters(const char * string, bool * result, cons
 {
     if (string != NULL && result != NULL)
     {
-        *result = has_unique_characters(string, 255);
+        *result = has_unique_characters(string, charset_length);
 
         return E_SUCCESS;
     }
