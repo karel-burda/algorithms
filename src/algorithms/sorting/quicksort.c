@@ -34,7 +34,6 @@ static size_t partition(int * array, size_t left_index, size_t right_index)
         }
     }
 
-
     return left_index;
 }
 
