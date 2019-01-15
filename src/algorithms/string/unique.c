@@ -6,7 +6,7 @@
 
 static bool has_unique_characters(const char * string, const size_t charset_length) {
     bool characters[charset_length];
-    // cannot initialize array variable-length arrays like "= { 0 }", so setting its memory
+    // cannot initialize array with variable lengths like "= { 0 }", so setting its memory manually to all 0s
     memset(&characters, 0, sizeof(characters));
 
     const char * iterator = string;
