@@ -15,7 +15,7 @@ class structures_bit_array_fixture : public ::testing::Test {
         void SetUp() override
         {
             // construct structure manually with help of RAII wrappers
-            bit_array = std::make_unique<::bit_array>();
+            bit_array = std::make_unique<structures_bit_array>();
             array = std::make_unique<unsigned char []>(2);
             bit_array->array = array.get();
 
@@ -32,13 +32,13 @@ class structures_bit_array_fixture : public ::testing::Test {
         {
         }
 
-        std::unique_ptr<::bit_array> bit_array;
+        std::unique_ptr<structures_bit_array> bit_array;
         std::unique_ptr<unsigned char []> array;
 };
 
 TEST(structures_bit_array, lifetime)
 {
-    bit_array * array = NULL;
+    structures_bit_array * array = NULL;
 
     {
         ASSERT_EQ(structures_bit_array_create(&array, 9), E_SUCCESS);
@@ -74,5 +74,11 @@ TEST_F(structures_bit_array_fixture, get)
 
     EXPECT_EQ(structures_bit_array_get(bit_array.get(), 8, &result), E_SUCCESS);
     EXPECT_EQ(result, 1);
+}
+
+TEST_F(structures_bit_array_fixture, set)
+{
+    EXPECT_EQ(structures_bit_array_set(bit_array.get(), 0, 1), E_SUCCESS);
+    EXPECT_EQ(array[0], 137);
 }
 }

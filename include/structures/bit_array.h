@@ -12,12 +12,12 @@ struct _burda_structures_bit_array
     size_t size;
 };
 
-typedef struct _burda_structures_bit_array bit_array;
+typedef struct _burda_structures_bit_array structures_bit_array;
 
-int structures_bit_array_create(bit_array ** array, size_t size);
+int structures_bit_array_create(structures_bit_array ** bit_array, size_t size);
 
-int structures_bit_array_destroy(bit_array ** array);
+int structures_bit_array_destroy(structures_bit_array ** bit_array);
 
-int structures_bit_array_get(bit_array * array, size_t index, unsigned char * result);
+int structures_bit_array_get(structures_bit_array * bit_array, size_t index, unsigned char * result);
 
-int structures_bit_array_set(bit_array * array, size_t index, unsigned char value);
+int structures_bit_array_set(structures_bit_array * bit_array, size_t index, unsigned char value);
