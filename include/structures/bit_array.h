@@ -1,7 +1,11 @@
 #pragma once
 
 #include <stddef.h>
-
+/* Example with bit array with size of 19, totally occupies 3 bytes
+ * |0|1|2|3|4|5|6|7|  |8|9|10|11|12|13|14|15|  |16|17|18|0|0|0|0|0|
+ * <--------------->  <--------------------->  <------------------>
+ *       1 byte                1 byte                 1 byte
+ */
 struct _burda_structures_bit_array
 {
     unsigned char * array;
