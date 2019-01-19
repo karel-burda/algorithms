@@ -5,12 +5,50 @@
 
 const size_t bits_in_byte = 8;
 
+static unsigned char get_byte_index(size_t bit_index)
+{
+    return bit_index / bits_in_byte;
+}
+
+static unsigned char get_bit_position_in_byte(size_t bit_index)
+{
+    return bit_index % bits_in_byte;
+}
+
+static size_t get_neccessary_size_in_bytes(size_t bits_needed)
+{
+    return (bits_needed / bits_in_byte) + (bits_needed % bits_in_byte == 0 ? 0 : 1);
+}
+
+static void set_bit(structures_bit_array * bit_array, unsigned char byte_index, unsigned char bit_position_in_byte, unsigned char value)
+{
+    const unsigned char shifts_to_left_needed = bits_in_byte - bit_position_in_byte - 1;
+    const unsigned char byte_with_specific_bit_set = 1 << shifts_to_left_needed;
+
+    if (value == 1)
+    {
+        bit_array->array[byte_index] |= byte_with_specific_bit_set;
+    }
+    else
+    {
+        bit_array->array[byte_index] &= ~(1 << shifts_to_left_needed);
+    }
+}
+
+static unsigned char get_bit(structures_bit_array * bit_array, unsigned char byte_index, unsigned char bit_position_in_byte)
+{
+    const unsigned char byte = bit_array->array[byte_index];
+    const unsigned char shifts_to_right_needed = bits_in_byte - bit_position_in_byte - 1;
+
+    return (byte >> shifts_to_right_needed) & 1;
+}
+
 int structures_bit_array_create(structures_bit_array ** bit_array, size_t size)
 {
     int error_code = E_FAILED_ALLOCATION;
-    const size_t bytes_needed = size / bits_in_byte + (size % bits_in_byte);
+    const size_t bytes_needed = get_neccessary_size_in_bytes(size);
 
-    *bit_array = (structures_bit_array *)malloc(sizeof(bit_array));
+    *bit_array = (structures_bit_array *)malloc(bytes_needed);
     if (*bit_array != NULL)
     {
         (*bit_array)->size = bytes_needed;
@@ -45,16 +83,11 @@ int structures_bit_array_destroy(structures_bit_array ** bit_array)
     }
 }
 
-int structures_bit_array_get(structures_bit_array * bit_array, size_t index, unsigned char * result)
+int structures_bit_array_get(structures_bit_array * bit_array, size_t bit_index, unsigned char * result)
 {
-    if (bit_array != NULL)
+    if (bit_array != NULL && result != NULL)
     {
-        const unsigned char byte_index = index / bits_in_byte;
-        const unsigned char byte = bit_array->array[byte_index];
-        const unsigned char bit_position_in_byte = index % bits_in_byte;
-        const unsigned char shifts_to_right_needed = bits_in_byte - bit_position_in_byte - 1;
-
-        *result = byte >> shifts_to_right_needed & 1;
+        *result = get_bit(bit_array, get_byte_index(bit_index), get_bit_position_in_byte(bit_index));
 
         return E_SUCCESS;
     }
@@ -64,16 +97,11 @@ int structures_bit_array_get(structures_bit_array * bit_array, size_t index, uns
     }
 }
 
-int structures_bit_array_set(structures_bit_array * bit_array, size_t index, unsigned char value)
+int structures_bit_array_set(structures_bit_array * bit_array, size_t bit_index, unsigned char value)
 {
-    if (bit_array != NULL)
+    if (bit_array != NULL && (value == 0 || value == 1))
     {
-        // TODO: extract this to function
-        const unsigned char byte_index = index / bits_in_byte;
-        const unsigned char bit_position_in_byte = index % bits_in_byte;
-        const unsigned char shifts_to_left_needed = bits_in_byte - bit_position_in_byte - 1;
-
-        bit_array->array[byte_index] |= (1 << shifts_to_left_needed);
+        set_bit(bit_array, get_byte_index(bit_index), get_bit_position_in_byte(bit_index), value);
 
         return E_SUCCESS;
     }

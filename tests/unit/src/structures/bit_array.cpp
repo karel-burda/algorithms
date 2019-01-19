@@ -11,7 +11,8 @@ extern "C"
 
 namespace
 {
-class structures_bit_array_fixture : public ::testing::Test {
+class structures_bit_array_fixture : public ::testing::Test
+{
     protected:
         void SetUp() override
         {
@@ -39,22 +40,33 @@ class structures_bit_array_fixture : public ::testing::Test {
 
 TEST(structures_bit_array, lifetime)
 {
-    structures_bit_array * array = NULL;
+    structures_bit_array * bit_array = NULL;
 
     {
-        ASSERT_EQ(structures_bit_array_create(&array, 9), E_SUCCESS);
-        ASSERT_TRUE(array);
-        EXPECT_TRUE(array->array);
-        EXPECT_EQ(array->size, 2);
+        ASSERT_EQ(structures_bit_array_create(&bit_array, 10), E_SUCCESS);
+        ASSERT_TRUE(bit_array);
+        EXPECT_TRUE(bit_array->array);
+        EXPECT_EQ(bit_array->size, 2);
 
         // it should look like plain array of 2 bytes (filled with zeros)
         unsigned char blueprint[] = { 0, 0 };
-        std::memcmp(array->array, blueprint, 2);
+        std::memcmp(bit_array->array, blueprint, 2);
+
+        ASSERT_EQ(structures_bit_array_destroy(&bit_array), E_SUCCESS);
+        ASSERT_FALSE(bit_array);
     }
 
     {
-        ASSERT_EQ(structures_bit_array_destroy(&array), E_SUCCESS);
-        ASSERT_FALSE(array);
+        ASSERT_EQ(structures_bit_array_create(&bit_array, 24), E_SUCCESS);
+        ASSERT_TRUE(bit_array);
+        EXPECT_TRUE(bit_array->array);
+        EXPECT_EQ(bit_array->size, 3);
+
+        unsigned char blueprint[] = { 0, 0, 0 };
+        std::memcmp(bit_array->array, blueprint, 3);
+
+        ASSERT_EQ(structures_bit_array_destroy(&bit_array), E_SUCCESS);
+        ASSERT_FALSE(bit_array);
     }
 }
 
@@ -79,7 +91,21 @@ TEST_F(structures_bit_array_fixture, get)
 
 TEST_F(structures_bit_array_fixture, set)
 {
-    EXPECT_EQ(structures_bit_array_set(bit_array.get(), 0, 1), E_SUCCESS);
-    EXPECT_EQ(array[0], 137);
+    // same value twice
+    {
+        EXPECT_EQ(structures_bit_array_set(bit_array.get(), 0, 1), E_SUCCESS);
+        EXPECT_EQ(array[0], 137);
+
+        EXPECT_EQ(structures_bit_array_set(bit_array.get(), 0, 1), E_SUCCESS);
+        EXPECT_EQ(array[0], 137);
+    }
+
+    {
+        EXPECT_EQ(structures_bit_array_set(bit_array.get(), 7, 1), E_SUCCESS);
+        EXPECT_EQ(array[0], 137);
+    }
+
+    EXPECT_EQ(structures_bit_array_set(bit_array.get(), 0, 0), E_SUCCESS);
+    EXPECT_EQ(array[0], 9);
 }
 }

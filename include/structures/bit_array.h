@@ -18,6 +18,6 @@ int structures_bit_array_create(structures_bit_array ** bit_array, size_t size);
 
 int structures_bit_array_destroy(structures_bit_array ** bit_array);
 
-int structures_bit_array_get(structures_bit_array * bit_array, size_t index, unsigned char * result);
+int structures_bit_array_get(structures_bit_array * bit_array, size_t bit_index, unsigned char * result);
 
-int structures_bit_array_set(structures_bit_array * bit_array, size_t index, unsigned char value);
+int structures_bit_array_set(structures_bit_array * bit_array, size_t bit_index, unsigned char value);
