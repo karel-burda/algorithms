@@ -14,10 +14,26 @@ struct _burda_structures_bit_array
 
 typedef struct _burda_structures_bit_array structures_bit_array;
 
+/**
+ * Time complexity -- all cases: O(1)
+ * Space complexity -- all cases: O(n)
+ */
 int structures_bit_array_create(structures_bit_array ** bit_array, size_t size);
 
+/**
+ * Time complexity -- all cases: O(1)
+ * Space complexity -- all cases: O(1)
+ */
 int structures_bit_array_destroy(structures_bit_array ** bit_array);
 
+/**
+ * Time complexity -- all cases: O(1)
+ * Space complexity -- all cases: O(1)
+ */
 int structures_bit_array_get(structures_bit_array * bit_array, size_t bit_index, unsigned char * result);
 
+/**
+ * Time complexity -- all cases: O(1)
+ * Space complexity -- all cases: O(1)
+ */
 int structures_bit_array_set(structures_bit_array * bit_array, size_t bit_index, unsigned char value);
