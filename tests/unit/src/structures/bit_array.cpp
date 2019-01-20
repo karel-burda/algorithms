@@ -77,16 +77,16 @@ TEST(structures_bit_array, invalid)
 
 TEST_F(structures_bit_array_fixture, get)
 {
-    unsigned char result = 0;
+    unsigned char bit = 0;
 
-    EXPECT_EQ(structures_bit_array_get(bit_array.get(), 0, &result), E_SUCCESS);
-    EXPECT_EQ(result, 0);
+    EXPECT_EQ(structures_bit_array_get(bit_array.get(), 0, &bit), E_SUCCESS);
+    EXPECT_EQ(bit, 0);
 
-    EXPECT_EQ(structures_bit_array_get(bit_array.get(), 4, &result), E_SUCCESS);
-    EXPECT_EQ(result, 1);
+    EXPECT_EQ(structures_bit_array_get(bit_array.get(), 4, &bit), E_SUCCESS);
+    EXPECT_EQ(bit, 1);
 
-    EXPECT_EQ(structures_bit_array_get(bit_array.get(), 8, &result), E_SUCCESS);
-    EXPECT_EQ(result, 1);
+    EXPECT_EQ(structures_bit_array_get(bit_array.get(), 8, &bit), E_SUCCESS);
+    EXPECT_EQ(bit, 1);
 }
 
 TEST_F(structures_bit_array_fixture, set)
@@ -107,5 +107,28 @@ TEST_F(structures_bit_array_fixture, set)
 
     EXPECT_EQ(structures_bit_array_set(bit_array.get(), 0, 0), E_SUCCESS);
     EXPECT_EQ(array[0], 9);
+}
+
+TEST(structures_bit_array, full)
+{
+    structures_bit_array * bit_array = NULL;
+
+    ASSERT_EQ(structures_bit_array_create(&bit_array, 10), E_SUCCESS);
+
+    unsigned char bit = 0;
+
+    EXPECT_EQ(structures_bit_array_get(bit_array, 4, &bit), E_SUCCESS);
+    EXPECT_EQ(bit, 0);
+    EXPECT_EQ(structures_bit_array_set(bit_array, 4, 1), E_SUCCESS);
+    EXPECT_EQ(structures_bit_array_get(bit_array, 4, &bit), E_SUCCESS);
+    EXPECT_EQ(bit, 1);
+
+    EXPECT_EQ(structures_bit_array_get(bit_array, 9, &bit), E_SUCCESS);
+    EXPECT_EQ(bit, 0);
+    EXPECT_EQ(structures_bit_array_set(bit_array, 9, 1), E_SUCCESS);
+    EXPECT_EQ(structures_bit_array_get(bit_array, 9, &bit), E_SUCCESS);
+    EXPECT_EQ(bit, 1);
+
+    ASSERT_EQ(structures_bit_array_destroy(&bit_array), E_SUCCESS);
 }
 }
