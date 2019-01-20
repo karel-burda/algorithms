@@ -63,7 +63,7 @@ TEST(structures_bit_array, lifetime)
         EXPECT_EQ(bit_array->size, 3);
 
         unsigned char blueprint[] = { 0, 0, 0 };
-        std::memcmp(&bit_array->array, blueprint, 3);
+        std::memcmp(bit_array->array, blueprint, 3);
 
         ASSERT_EQ(structures_bit_array_destroy(&bit_array), E_SUCCESS);
         ASSERT_FALSE(bit_array);

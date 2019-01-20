@@ -3,16 +3,16 @@
 #include "algorithms/error_code.h"
 #include "structures/bit_array.h"
 
-const size_t bits_in_byte = 8;
+const unsigned char bits_in_byte = 8;
 
-static unsigned char get_byte_index(size_t bit_index)
+static size_t get_byte_index(size_t bit_index)
 {
     return bit_index / bits_in_byte;
 }
 
 static unsigned char get_bit_position_in_byte(size_t bit_index)
 {
-    return bit_index % bits_in_byte;
+    return (unsigned char)(bit_index % bits_in_byte);
 }
 
 static size_t get_neccessary_size_in_bytes(size_t bits_needed)
@@ -20,10 +20,10 @@ static size_t get_neccessary_size_in_bytes(size_t bits_needed)
     return (bits_needed / bits_in_byte) + (bits_needed % bits_in_byte == 0 ? 0 : 1);
 }
 
-static void set_bit(structures_bit_array * bit_array, unsigned char byte_index, unsigned char bit_position_in_byte, unsigned char value)
+static void set_bit(structures_bit_array * bit_array, size_t byte_index, unsigned char bit_position_in_byte, unsigned char value)
 {
-    const unsigned char shifts_to_left_needed = bits_in_byte - bit_position_in_byte - 1;
-    const unsigned char byte_with_specific_bit_set = 1 << shifts_to_left_needed;
+    const unsigned char shifts_to_left_needed = (unsigned char)(bits_in_byte - bit_position_in_byte - 1);
+    const unsigned char byte_with_specific_bit_set = (unsigned char)(1u << shifts_to_left_needed);
 
     if (value == 1)
     {
@@ -31,16 +31,16 @@ static void set_bit(structures_bit_array * bit_array, unsigned char byte_index, 
     }
     else
     {
-        bit_array->array[byte_index] &= ~(1 << shifts_to_left_needed);
+        bit_array->array[byte_index] &= ~(1u << shifts_to_left_needed);
     }
 }
 
-static unsigned char get_bit(structures_bit_array * bit_array, unsigned char byte_index, unsigned char bit_position_in_byte)
+static unsigned char get_bit(structures_bit_array * bit_array, size_t byte_index, unsigned char bit_position_in_byte)
 {
     const unsigned char byte = bit_array->array[byte_index];
-    const unsigned char shifts_to_right_needed = bits_in_byte - bit_position_in_byte - 1;
+    const unsigned char shifts_to_right_needed = (unsigned char)(bits_in_byte - bit_position_in_byte - 1);
 
-    return (byte >> shifts_to_right_needed) & 1;
+    return (unsigned char)((byte >> shifts_to_right_needed) & 1u);
 }
 
 int structures_bit_array_create(structures_bit_array ** bit_array, size_t size)
