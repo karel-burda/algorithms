@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 
 #include "algorithms/error_code.h"
 #include "structures/bit_array.h"
@@ -53,6 +54,7 @@ int structures_bit_array_create(structures_bit_array ** bit_array, size_t size)
     {
         (*bit_array)->size = bytes_needed;
         (*bit_array)->array = malloc((*bit_array)->size);
+        memset((*bit_array)->array, 0, (*bit_array)->size);
 
         if ((*bit_array)->array != NULL)
         {
