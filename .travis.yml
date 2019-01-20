@@ -17,6 +17,7 @@ matrix:
            packages:
              - g++-6
              - cppcheck
+             - valgrind
        install: export CXX="g++-6"
        script:
          - set -e
@@ -36,5 +37,7 @@ matrix:
          - cmake --build build/tests/unit --target run-all-tests-verbose --config $BUILD_TYPE -- -j $(nproc)
 
          - bash <(curl -s https://codecov.io/bash)
+
+         - valgrind --error-exitcode=255 -v build/tests/unit/tests
 
          - set +e
