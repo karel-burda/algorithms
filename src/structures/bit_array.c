@@ -47,12 +47,11 @@ static unsigned char get_bit(structures_bit_array * bit_array, size_t byte_index
 int structures_bit_array_create(structures_bit_array ** bit_array, size_t size)
 {
     int error_code = E_FAILED_ALLOCATION;
-    const size_t bytes_needed = get_neccessary_size_in_bytes(size);
 
-    *bit_array = (structures_bit_array *)malloc(bytes_needed);
+    *bit_array = malloc(sizeof(structures_bit_array));
     if (*bit_array != NULL)
     {
-        (*bit_array)->size = bytes_needed;
+        (*bit_array)->size = get_neccessary_size_in_bytes(size);
         (*bit_array)->array = malloc((*bit_array)->size);
         memset((*bit_array)->array, 0, (*bit_array)->size);
 
