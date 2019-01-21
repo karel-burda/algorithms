@@ -48,7 +48,7 @@ int structures_bit_array_create(structures_bit_array ** bit_array, size_t size)
 {
     int error_code = E_FAILED_ALLOCATION;
 
-    *bit_array = malloc(sizeof(structures_bit_array));
+    *bit_array = malloc(sizeof(structures_bit_array) - sizeof(unsigned char *));
     if (*bit_array != NULL)
     {
         (*bit_array)->size = get_neccessary_size_in_bytes(size);
