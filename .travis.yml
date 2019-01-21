@@ -38,6 +38,6 @@ matrix:
 
          - bash <(curl -s https://codecov.io/bash)
 
-         - valgrind --error-exitcode=255 --log-file=output -v build/tests/unit/tests
+         - valgrind --error-exitcode=255 -v build/tests/unit/tests
 
          - set +e
