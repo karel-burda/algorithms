@@ -42,15 +42,17 @@ matrix:
 
          - set +e
 
-     - name: "algorithms, tests -- windows, release, msvc, 32-bit"
-       os: windows
+     - name: "function-loader, example, tests -- osx, release with debug info, valgrind, clang++, 64-bit"
+       os: osx
+       osx_image: xcode10.1
        language: cpp
        env: BUILD_TYPE="Release"
+       compiler: clang
        script:
          - set -e
 
          - cmake -Bbuild -H. -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE
-         - cmake --build build --target algorithms --config $BUILD_TYPE
+         - cmake --build build --target algorithms --config $BUILD_TYPE -- -j $(sysctl -n hw.ncpu)
 
          - cmake -Bbuild/submodules/test-utils -Hsubmodules/test-utils -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE
 
@@ -58,6 +60,6 @@ matrix:
                  -Dalgorithms_DIR:PATH=$(pwd)/build
                  -Dtest-utils_DIR:PATH=$(pwd)/build/submodules/test-utils
                  -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE
-         - cmake --build build/tests/unit --target run-all-tests-verbose --config $BUILD_TYPE
+         - cmake --build build/tests/unit --target run-all-tests-verbose --config $BUILD_TYPE -- -j $(sysctl -n hw.ncpu)
 
          - set +e
