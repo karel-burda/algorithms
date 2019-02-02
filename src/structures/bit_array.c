@@ -4,7 +4,7 @@
 #include "algorithms/error_code.h"
 #include "structures/bit_array.h"
 
-const unsigned char bits_in_byte = 8;
+static const unsigned char bits_in_byte = 8;
 
 static size_t get_byte_index(size_t bit_index)
 {

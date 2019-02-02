@@ -10,8 +10,9 @@ add_library(${PROJECT_NAME} STATIC)
 target_sources(${PROJECT_NAME}
                    PUBLIC
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/error_code.h
-                       ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/searching/binary_search.h
+                       ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/bits/bits.h
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/number/swap.h
+                       ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/searching/binary_search.h
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/sorting/quicksort.h
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/string/reverse.h
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/algorithms/string/strlen.h
@@ -23,8 +24,9 @@ target_sources(${PROJECT_NAME}
                        ${CMAKE_CURRENT_SOURCE_DIR}/include/helper/array.h
 
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/helper/array.c
-                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/searching/binary_search.c
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/bits/bits.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/number/swap.c
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/searching/binary_search.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/sorting/quicksort.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/reverse.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/strlen.c
