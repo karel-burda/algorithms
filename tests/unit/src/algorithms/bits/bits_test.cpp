@@ -39,12 +39,12 @@ TEST(bits_get_number_of_one_bits, basic)
 
     {
         bits_find_number_of_one_bits(-1, &ones);
-        EXPECT_EQ(ones, 16);
+        EXPECT_EQ(ones, sizeof(int) * 8);
     }
 
     {
         bits_find_number_of_one_bits(-3, &ones);
-        EXPECT_EQ(ones, 15);
+        EXPECT_EQ(ones, sizeof(int) * 8 - 1);
     }
 }
 
