@@ -11,4 +11,4 @@ enum _burda_algorithms_endianness
 
 typedef enum _burda_algorithms_endianness endianness;
 
-error_code bytes_get_endiannes(endianness * result);
+error_code bytes_get_endianness(endianness * result);

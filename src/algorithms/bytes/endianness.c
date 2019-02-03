@@ -3,7 +3,7 @@
 
 #include "algorithms/bytes/endianness.h"
 
-static endianness get_endianness()
+static endianness get_endianness() __attribute__ ((optnone))
 {
     const u_int16_t number = 1;
 
@@ -21,7 +21,7 @@ static endianness get_endianness()
     }
 }
 
-error_code bytes_get_endiannes(endianness * result)
+error_code bytes_get_endianness(endianness * result)
 {
     if (result != NULL)
     {
