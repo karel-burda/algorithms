@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <inttypes.h>
+#include <sys/types.h>
 
 #include "algorithms/bytes/endianness.h"
 
