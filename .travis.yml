@@ -15,7 +15,7 @@ matrix:
            sources:
              - ubuntu-toolchain-r-test
            packages:
-             - gcc-8
+             - g++-8
              - cppcheck
              - valgrind
        install: export CC="gcc-8" export CXX="g++-8"
