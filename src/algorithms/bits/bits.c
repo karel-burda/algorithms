@@ -5,7 +5,7 @@
 
 static const unsigned char bits_in_byte = 8;
 
-static int find_number_of_one_bits(int number, unsigned char * one_bits)
+static void find_number_of_one_bits(int number, unsigned char * one_bits)
 {
     *one_bits = 0;
     const unsigned char bit_shits = sizeof(number) * bits_in_byte;
@@ -21,15 +21,15 @@ static int find_number_of_one_bits(int number, unsigned char * one_bits)
         number >>= 1;
         ++i;
     }
-
-    return E_SUCCESS;
 }
 
-int bits_find_number_of_one_bits(int number, unsigned char * one_bits)
+error_code bits_find_number_of_one_bits(int number, unsigned char * one_bits)
 {
     if (one_bits != NULL)
     {
-       return find_number_of_one_bits(number, one_bits);
+        find_number_of_one_bits(number, one_bits);
+
+        return E_SUCCESS;
     }
     else
     {

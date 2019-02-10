@@ -1,7 +1,9 @@
 #pragma once
 
+#include "algorithms/error_code.h"
+
 /**
  * Time complexity -- all cases: O(n)
  * Space complexity -- all cases: O(n)
  */
-int string_reverse(char * string);
+error_code string_reverse(char * string);

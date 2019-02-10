@@ -44,7 +44,7 @@ static unsigned char get_bit(structures_bit_array * bit_array, size_t byte_index
     return (unsigned char)((byte >> shifts_to_right_needed) & 1u);
 }
 
-int structures_bit_array_create(structures_bit_array ** bit_array, size_t size)
+error_code structures_bit_array_create(structures_bit_array ** bit_array, size_t size)
 {
     int error_code = E_FAILED_ALLOCATION;
 
@@ -65,7 +65,7 @@ int structures_bit_array_create(structures_bit_array ** bit_array, size_t size)
     return error_code;
 }
 
-int structures_bit_array_destroy(structures_bit_array ** bit_array)
+error_code structures_bit_array_destroy(structures_bit_array ** bit_array)
 {
     if (bit_array != NULL && *bit_array != NULL) {
         free((*bit_array)->array);
@@ -84,7 +84,7 @@ int structures_bit_array_destroy(structures_bit_array ** bit_array)
     }
 }
 
-int structures_bit_array_get(structures_bit_array * bit_array, size_t bit_index, unsigned char * result)
+error_code structures_bit_array_get(structures_bit_array * bit_array, size_t bit_index, unsigned char * result)
 {
     if (bit_array != NULL && result != NULL)
     {
@@ -98,7 +98,7 @@ int structures_bit_array_get(structures_bit_array * bit_array, size_t bit_index,
     }
 }
 
-int structures_bit_array_set(structures_bit_array * bit_array, size_t bit_index, unsigned char value)
+error_code structures_bit_array_set(structures_bit_array * bit_array, size_t bit_index, unsigned char value)
 {
     if (bit_array != NULL && (value == 0 || value == 1))
     {

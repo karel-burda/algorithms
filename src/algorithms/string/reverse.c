@@ -3,7 +3,7 @@
 #include "algorithms/error_code.h"
 #include "algorithms/string/reverse.h"
 
-int string_reverse(char * string)
+error_code string_reverse(char * string)
 {
     if (string != NULL && *string != '\0')
     {

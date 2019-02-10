@@ -51,7 +51,7 @@ static void quicksort_recursive(int array[], size_t left_index, size_t right_ind
     }
 }
 
-int sorting_quicksort_recursive(int array[], size_t size)
+error_code sorting_quicksort_recursive(int array[], size_t size)
 {
     if (array != NULL && size != 0)
     {

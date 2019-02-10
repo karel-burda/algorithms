@@ -1,7 +1,7 @@
 #include "algorithms/error_code.h"
 #include "algorithms/string/strlen.h"
 
-int string_strlen(const char * string, size_t * length)
+error_code string_strlen(const char * string, size_t * length)
 {
     if (string != NULL && length != NULL)
     {

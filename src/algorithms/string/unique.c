@@ -38,7 +38,7 @@ static bool has_unique_characters(const char * string, const size_t charset_leng
     return true;
 }
 
-static int string_has_unique_characters(const char * string, bool * result, const size_t charset_length)
+static error_code string_has_unique_characters(const char * string, bool * result, const size_t charset_length)
 {
     if (string != NULL && result != NULL)
     {
@@ -52,7 +52,7 @@ static int string_has_unique_characters(const char * string, bool * result, cons
     }
 }
 
-int string_has_unique_characters_ascii(const char * string, bool * result)
+error_code string_has_unique_characters_ascii(const char * string, bool * result)
 {
     return string_has_unique_characters(string, result, 255);
 }

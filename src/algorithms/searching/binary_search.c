@@ -33,7 +33,7 @@ static int binary_search_recursive(const int array[], size_t size, size_t left_i
     }
 }
 
-static int binary_search_iterative(const int array[], size_t size, size_t left_index, size_t right_index, int element)
+static error_code binary_search_iterative(const int array[], size_t size, size_t left_index, size_t right_index, int element)
 {
     while (true)
     {
@@ -60,7 +60,7 @@ static int binary_search_iterative(const int array[], size_t size, size_t left_i
     }
 }
 
-static int binary_search(int(* search_function)(const int[], size_t, size_t, size_t, int), const int array[], size_t size, int element)
+static error_code binary_search(int(* search_function)(const int[], size_t, size_t, size_t, int), const int array[], size_t size, int element)
 {
     if (array != NULL && size != 0)
     {
@@ -72,12 +72,12 @@ static int binary_search(int(* search_function)(const int[], size_t, size_t, siz
     }
 }
 
-int searching_binary_search_recursive(const int array[], size_t size, int element)
+error_code searching_binary_search_recursive(const int array[], size_t size, int element)
 {
     return binary_search(binary_search_recursive, array, size, element);
 }
 
-int searching_binary_search_iterative(const int array[], size_t size, int element)
+error_code searching_binary_search_iterative(const int array[], size_t size, int element)
 {
     return binary_search(binary_search_iterative, array, size, element);
 }

@@ -3,7 +3,7 @@
 #include "algorithms/error_code.h"
 #include "algorithms/number/swap.h"
 
-int number_swap(int * number1, int * number2)
+error_code number_swap(int * number1, int * number2)
 {
     if (number1 != NULL && number2 != NULL)
     {
