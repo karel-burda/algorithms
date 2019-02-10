@@ -7,7 +7,7 @@
 #if defined(__clang__) || defined(__APPLE__)
 __attribute__ ((optnone)) static endianness get_endianness()
 #elif defined(__GNUC__) || defined(__GNUG__)
-static endianness __attribute__((optimize("O0"))) endianness get_endianness()
+static endianness __attribute__((optimize("O0"))) get_endianness()
 #else
 static endianness get_endianness()
 #endif
