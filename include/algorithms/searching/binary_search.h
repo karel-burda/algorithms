@@ -8,4 +8,4 @@
  */
 int searching_binary_search_recursive(const int array[], size_t size, int element);
 
-int searching_binary_search_iterative(int array[], size_t size, int element);
+int searching_binary_search_iterative(const int array[], size_t size, int element);

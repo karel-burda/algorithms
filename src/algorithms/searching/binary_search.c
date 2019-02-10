@@ -60,11 +60,11 @@ static int binary_search_iterative(const int array[], size_t size, size_t left_i
     }
 }
 
-int searching_binary_search_recursive(const int array[], size_t size, int element)
+static int binary_search(int(* search_function)(const int[], size_t, size_t, size_t, int), const int array[], size_t size, int element)
 {
     if (array != NULL && size != 0)
     {
-        return binary_search_recursive(array, size, 0, size-1, element);
+        return search_function(array, size, 0, size - 1, element);
     }
     else
     {
@@ -72,14 +72,12 @@ int searching_binary_search_recursive(const int array[], size_t size, int elemen
     }
 }
 
-int searching_binary_search_iterative(int array[], size_t size, int element)
+int searching_binary_search_recursive(const int array[], size_t size, int element)
 {
-    if (array != NULL && size != 0)
-    {
-        return binary_search_iterative(array, size, 0, size-1, element);
-    }
-    else
-    {
-        return E_INVALID_INPUT;
-    }
+    return binary_search(binary_search_recursive, array, size, element);
+}
+
+int searching_binary_search_iterative(const int array[], size_t size, int element)
+{
+    return binary_search(binary_search_iterative, array, size, element);
 }
