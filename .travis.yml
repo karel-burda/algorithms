@@ -3,7 +3,7 @@ git:
 
 matrix:
   include:
-     - name: "algorithms, tests -- linux, debug, cppcheck, coverage, g++, 64-bit"
+     - name: "algorithms, tests -- linux, debug, cppcheck, coverage, gcc, 64-bit"
        os: linux
        dist: xenial
        language: cpp
@@ -15,10 +15,10 @@ matrix:
            sources:
              - ubuntu-toolchain-r-test
            packages:
-             - g++-6
+             - gcc-8
              - cppcheck
              - valgrind
-       install: export CXX="g++-6"
+       install: export CC="gcc-8" export CXX="g++-8"
        script:
          - set -e
 
@@ -42,7 +42,7 @@ matrix:
 
          - set +e
 
-     - name: "algorithms, tests -- osx, release, clang++, 64-bit"
+     - name: "algorithms, tests -- osx, release, clang, 64-bit"
        os: osx
        osx_image: xcode10.1
        language: cpp
