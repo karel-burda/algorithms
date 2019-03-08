@@ -10,28 +10,28 @@ namespace
 TEST(prime_test, basic)
 {
     {
-        vool is_prime = false;
+        bool is_prime = false;
 
         EXPECT_EQ(number_is_prime(2, &is_prime), E_SUCCESS);
         EXPECT_EQ(is_prime, false);
     }
 
     {
-        vool is_prime = false;
+        bool is_prime = false;
 
         EXPECT_EQ(number_is_prime(3, &is_prime), E_SUCCESS);
         EXPECT_EQ(is_prime, true);
     }
 
     {
-        vool is_prime = false;
+        bool is_prime = false;
 
         EXPECT_EQ(number_is_prime(4096, &is_prime), E_SUCCESS);
         EXPECT_EQ(is_prime, false);
     }
 
     {
-        vool is_prime = false;
+        bool is_prime = false;
 
         EXPECT_EQ(number_is_prime(119, &is_prime), E_SUCCESS);
         EXPECT_EQ(is_prime, true);
