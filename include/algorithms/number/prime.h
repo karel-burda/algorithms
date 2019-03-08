@@ -6,8 +6,9 @@
 #include "algorithms/error_code.h"
 
 /**
- * Time complexity -- TODO
- * Space complexity -- TODO
+ * Time complexity --  all cases: O(sqrt(n))
+ * Space complexity -- all cases: 1
  */
-
 error_code number_is_prime_using_division(size_t number, bool * is_prime);
+
+error_code number_is_prime_using_eratosthenes(size_t number, bool * is_prime);
