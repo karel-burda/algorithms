@@ -1,3 +1,5 @@
+#include <limits.h>
+
 #include <gtest/gtest.h>
 
 extern "C"
@@ -49,6 +51,22 @@ TEST(prime_test, basic)
 
         EXPECT_EQ(number_is_prime_using_division(4297, &is_prime), E_SUCCESS);
         EXPECT_EQ(is_prime, true);
+    }
+
+    {
+        bool is_prime = false;
+
+        EXPECT_EQ(number_is_prime_using_division(75821, &is_prime), E_SUCCESS);
+        EXPECT_EQ(is_prime, true);
+    }
+}
+
+TEST(prime_test, limits)
+{
+    {
+        bool is_prime = false;
+
+        EXPECT_EQ(number_is_prime_using_division(SIZE_T_MAX, &is_prime), E_SUCCESS);
     }
 }
 
