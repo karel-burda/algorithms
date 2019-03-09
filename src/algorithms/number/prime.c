@@ -4,14 +4,19 @@
 
 bool is_prime_using_division(const size_t number)
 {
+    if (number % 2 == 0 && number > 2)
+    {
+        return false;
+    }
+
     const double square_root = sqrt((double)number);
-    size_t divisor = 2;
+    size_t divisor = 3;
 
     while (divisor < square_root)
     {
         if (number % divisor != 0)
         {
-            ++divisor;
+            divisor += 2;
         }
         else
         {
