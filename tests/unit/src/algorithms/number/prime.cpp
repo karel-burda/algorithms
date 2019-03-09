@@ -15,7 +15,7 @@ TEST(prime_test, basic)
         bool is_prime = false;
 
         EXPECT_EQ(number_is_prime_using_division(2, &is_prime), E_SUCCESS);
-        EXPECT_EQ(is_prime, false);
+        EXPECT_EQ(is_prime, true);
     }
 
     {

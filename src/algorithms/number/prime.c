@@ -7,11 +7,6 @@ bool is_prime_using_division(const size_t number)
     const double square_root = sqrt((double)number);
     size_t divisor = 2;
 
-    if (divisor >= number)
-    {
-        return false;
-    }
-
     while (divisor < square_root)
     {
         if (number % divisor != 0)
