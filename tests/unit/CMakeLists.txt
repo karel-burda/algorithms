@@ -17,6 +17,7 @@ target_sources(${PROJECT_NAME}
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/number/swap.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/searching/binary_search.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/sorting/quicksort.cpp
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/permutation.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/reverse.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/strlen.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/unique.cpp
