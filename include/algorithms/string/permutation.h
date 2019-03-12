@@ -5,6 +5,9 @@
 
 #include "algorithms/error_code.h"
 
-error_code string_are_permutations(const char * first, const char * second, size_t length, bool * permutations);
-
+/**
+ * Time complexity -- all cases: O(n!)
+ * Space complexity -- all cases: O(n!)
+ * "permutations" returned has to be freed
+ */
 error_code string_get_all_permutations(char * string, size_t length, char *** permutations, size_t * permutations_size);

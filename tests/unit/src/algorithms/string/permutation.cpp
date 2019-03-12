@@ -12,6 +12,7 @@ class strings_permutation_fixture : public ::testing::Test
     protected:
         void SetUp() override
         {
+            permutations = nullptr;
         }
 
         void TearDown() override
@@ -38,6 +39,25 @@ TEST_F(strings_permutation_fixture, basic)
         EXPECT_STREQ(permutations[3], "BCA");
         EXPECT_STREQ(permutations[4], "CBA");
         EXPECT_STREQ(permutations[5], "CAB");
+    }
+}
+
+TEST_F(strings_permutation_fixture, invalid)
+{
+    size_t number_of_permutations = 0;
+
+    {
+        EXPECT_EQ(string_get_all_permutations(NULL, 45, &permutations, &number_of_permutations), E_INVALID_INPUT);
+    }
+
+    {
+        char string[] = "";
+        EXPECT_EQ(string_get_all_permutations(string, 0, &permutations, &number_of_permutations), E_SUCCESS);
+    }
+
+    {
+        char string[] = "ABC";
+        EXPECT_EQ(string_get_all_permutations(string, strlen(string), &permutations, nullptr), E_INVALID_INPUT);
     }
 }
 }
