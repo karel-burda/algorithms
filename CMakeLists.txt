@@ -18,10 +18,12 @@ target_sources(${PROJECT_NAME}
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/number/swap.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/searching/binary_search.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/sorting/quicksort.c
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/sorting/radix.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/permutation.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/reverse.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/strlen.c
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/unique.c
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/threading/lock.c
 
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/structures/bit_array.c)
 
