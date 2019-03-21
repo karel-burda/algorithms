@@ -20,9 +20,9 @@ TEST(radix, basic)
     }
 
     {
-        const size_t size = 5;
-        int input[size] = {7, 3, -256, 1048, -10};
-        int sorted[size] = {-256, -10, 3, 7, 1048};
+        const size_t size = 6;
+        int input[size] = {7, 3, -256, 1048, -10, 0};
+        int sorted[size] = {-256, -10, 0, 3, 7, 1048};
 
         EXPECT_EQ(sorting_radix(input, size), E_SUCCESS);
         BURDA_TEST_UTILS_ARRAY_EXPECT_EQUAL(input, sorted, size);
