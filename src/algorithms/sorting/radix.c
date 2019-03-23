@@ -2,10 +2,11 @@
 
 #include "algorithms/sorting/radix.h"
 
-#include "helper/array.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+static const unsigned char digits = 10;
 
 static unsigned char get_digit(int number, unsigned char position)
 {
@@ -13,46 +14,41 @@ static unsigned char get_digit(int number, unsigned char position)
     return (unsigned char)(number_rounded_to_units % 10);
 }
 
-static unsigned char get_digits_of_highest_number(int array[], size_t size)
+static void get_info_about_array(int array[], size_t size, unsigned char * maximum_digits, size_t * number_of_negatives)
 {
-    int max = array[0];
-    for (size_t i = 1; i < size; ++i)
+    *maximum_digits = 0;
+    *number_of_negatives = 0;
+
+    int max_number = array[0];
+    for (size_t i = 0; i < size; ++i)
     {
-        if (array[i] > max)
+        if (array[i] > max_number)
         {
-            max = array[i];
+            max_number = array[i];
+        }
+
+        if (array[i] < 0)
+        {
+            ++(*number_of_negatives);
         }
     }
 
-    unsigned char digits = 0;
-    while (max != 0)
+    while (max_number != 0)
     {
-        max /= 10;
-        ++digits;
+        max_number /= 10;
+        ++(*maximum_digits);
     }
-
-    return digits;
 }
 
-static void sort_according_to_digits(int array[], size_t size)
+static void sort_according_to_digits(int array[], const size_t size, unsigned char max_number_of_digits)
 {
-    // in decimal, we have 9 digits: 0-9
-    const unsigned char digits = 10;
-    const size_t bucket_size = size;
-
-    // we could do that in the first pass, but the code would be less read-able
-    const unsigned char number_of_digits = get_digits_of_highest_number(array, size);
-
-    for (unsigned char digit_index = 0; digit_index < number_of_digits; ++digit_index)
+    for (unsigned char digit_index = 0; digit_index < max_number_of_digits; ++digit_index)
     {
-        printf("digit: %d\n", digit_index);
-        helper_print_array(array, 0, size-1);
-
-        // cannot initialize variable-sized objects
-        size_t buckets[digits][bucket_size];
-        memset(&buckets, 0, sizeof(bucket_size));
+        size_t buckets[digits][size];
+        memset(&buckets, 0, sizeof(size));
         size_t bucket_sizes[digits] = {0};
 
+        // push to buckets
         for (size_t i = 0; i < size; ++i)
         {
             const int current_number = array[i];
@@ -63,33 +59,20 @@ static void sort_according_to_digits(int array[], size_t size)
             ++bucket_sizes[current_digit];
         }
 
-        size_t current_index = 0;
+        // pull from buckets
+        size_t array_index = 0;
         for (unsigned char i = 0; i < digits; ++i)
         {
             for (unsigned char j = 0; j < bucket_sizes[i]; ++j)
             {
-                array[current_index++] = buckets[i][j];
+                array[array_index++] = buckets[i][j];
             }
         }
-
-        helper_print_array(array, 0, size-1);
     }
 }
 
-static void sort_according_to_sign(int array[], size_t size)
+static void sort_according_to_sign(int array[], size_t size, size_t number_of_negatives)
 {
-
-
-    // TODO: remove
-    size_t number_of_negatives = 0;
-    for (size_t i = 0; i< size; ++i)
-    {
-        if (array[i] < 0)
-        {
-            ++number_of_negatives;
-        }
-    }
-
     if (number_of_negatives > 0) {
         int negatives[number_of_negatives];
         int positives_or_zero[size - number_of_negatives];
@@ -124,8 +107,12 @@ static void sort_according_to_sign(int array[], size_t size)
 
 static void radix(int array[], size_t size)
 {
-    sort_according_to_digits(array, size);
-    sort_according_to_sign(array, size);
+    unsigned char max_number_of_digits = 0;
+    size_t number_of_negatives = 0;
+    get_info_about_array(array, size, &max_number_of_digits, &number_of_negatives);
+
+    sort_according_to_digits(array, size, max_number_of_digits);
+    sort_according_to_sign(array, size, number_of_negatives);
 }
 
 error_code sorting_radix(int array[], size_t size)
