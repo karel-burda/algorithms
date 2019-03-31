@@ -10,7 +10,6 @@ namespace
 {
 TEST(mergesort, basic)
 {
-    /*
     {
         const size_t size = 1;
         int input[size] = {-99};
@@ -37,7 +36,7 @@ TEST(mergesort, basic)
         EXPECT_EQ(sorting_mergesort(input, size), E_SUCCESS);
         BURDA_TEST_UTILS_ARRAY_EXPECT_EQUAL(input, sorted, size);
     }
-*/
+
     {
         const size_t size = 7;
         int input[size] = {38, 27, 43, 3, 9, 82, 10};
@@ -50,6 +49,15 @@ TEST(mergesort, basic)
 
 TEST(mergesort, invalid)
 {
+    {
+        EXPECT_EQ(sorting_mergesort(NULL, 10), E_INVALID_INPUT);
+    }
 
+    {
+        const size_t size = 2;
+        int input[size] = { 8, 7 };
+
+        EXPECT_EQ(sorting_mergesort(input, 0), E_INVALID_INPUT);
+    }
 }
 }
