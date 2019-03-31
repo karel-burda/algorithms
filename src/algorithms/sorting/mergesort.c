@@ -7,7 +7,7 @@
 // second sub-array is array[middle_index+1...right_index]
 static void merge(int array[], size_t left_index, size_t middle_index, size_t right_index)
 {
-    const size_t first_array_size = middle_index-left_index+1;
+    const size_t first_array_size = middle_index-left_index + 1;
     const size_t second_array_size = right_index-middle_index;
 
     int first_array[first_array_size];
@@ -45,30 +45,22 @@ static void merge(int array[], size_t left_index, size_t middle_index, size_t ri
     {
         if (first_array[first_index] <= second_array[second_index])
         {
-            sorted[sorted_index] = first_array[first_index];
-            ++sorted_index;
-            ++first_index;
+            sorted[sorted_index++] = first_array[first_index++];
         }
         else
         {
-            sorted[sorted_index] = second_array[second_index];
-            ++sorted_index;
-            ++second_index;
+            sorted[sorted_index++] = second_array[second_index++];
         }
     }
 
     while (first_index < first_array_size)
     {
-        sorted[sorted_index] = first_array[first_index];
-        ++first_index;
-        ++sorted_index;
+        sorted[sorted_index++] = first_array[first_index++];
     }
 
     while (second_index < second_array_size)
     {
-        sorted[sorted_index] = second_array[second_index];
-        ++second_index;
-        ++sorted_index;
+        sorted[sorted_index++] = second_array[second_index++];
     }
 
     printf("sorted: ");
