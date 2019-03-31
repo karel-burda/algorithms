@@ -38,7 +38,7 @@ TEST(radix, basic)
     }
 }
 
-TEST(radix_test, invalid)
+TEST(radix, invalid)
 {
     EXPECT_EQ(sorting_radix(NULL, 9), E_INVALID_INPUT);
     int input[] = {1, 2};

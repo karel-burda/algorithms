@@ -16,6 +16,7 @@ target_sources(${PROJECT_NAME}
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/number/prime.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/number/swap.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/searching/binary_search.cpp
+                       ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/sorting/mergesort.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/sorting/quicksort.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/sorting/radix.cpp
                        ${CMAKE_CURRENT_SOURCE_DIR}/src/algorithms/string/permutation.cpp
