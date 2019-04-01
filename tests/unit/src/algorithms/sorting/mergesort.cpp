@@ -45,6 +45,15 @@ TEST(mergesort, basic)
         EXPECT_EQ(sorting_mergesort(input, size), E_SUCCESS);
         BURDA_TEST_UTILS_ARRAY_EXPECT_EQUAL(input, sorted, size);
     }
+
+    {
+        const size_t size = 9;
+        int input[size] = {38, -90, 0, -6, 9, 0, 4096, 1, -15};
+        int sorted[size] = {-90, -15, -6, 0, 0, 1, 9, 38, 4096};
+
+        EXPECT_EQ(sorting_mergesort(input, size), E_SUCCESS);
+        BURDA_TEST_UTILS_ARRAY_EXPECT_EQUAL(input, sorted, size);
+    }
 }
 
 TEST(mergesort, invalid)

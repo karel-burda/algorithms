@@ -47,10 +47,7 @@ static void merge(int array[], size_t left_index, size_t middle_index, size_t ri
         array[sorted_index++] = first_array[first_index++];
     }
 
-    while (second_index < second_array_size)
-    {
-        array[sorted_index++] = second_array[second_index++];
-    }
+    // no need to copy the second_array into array, because it's already there & is sorted
 }
 
 static size_t get_middle_index_and_avoid_overflow(size_t left_index, size_t right_index)
